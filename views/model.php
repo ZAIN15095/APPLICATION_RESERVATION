@@ -10,7 +10,7 @@ class Reservation_data
     private $id=null;
 
 
-    public function __construct($name, $age,$id,$destination, $number_places )
+    public function __construct($name, $age,$id,$destination=" ", $number_places=" " )
     {
         if ($id = !null) {
             $this->id = $id;
@@ -19,14 +19,11 @@ class Reservation_data
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
+        $this->error_get_destination=" ";
+        $this-> error_get_nbr_places=" ";
     }
 
-    public function __contruct($error)
-    {
-        $this->error=error_destination;
-        $this->error=err
 
-    }
 
 
      public function return_id ()
@@ -34,7 +31,7 @@ class Reservation_data
         return $this->id;
     }
 
-    public function define_destionation ()
+    public function Get_destionation ()
     {
         return $this->destination;
 
@@ -45,16 +42,29 @@ class Reservation_data
         return $this->destination= $new_destionation;
     }
 
-    public function Error_define_destination()
+    public function Error_get_destination()
     {
         if ($this->destination==" ")
         {
-            $this-> error_destination="Veilleu...."
+           $this-> error_get_destination="Veilleu....";
         }
+
+        if ($this->destination!=is_string($this->destination))
+        {
+           $this-> error_get_destination="Veullier....";
+        }
+
+        else
+        {
+                return $this->error_get_destination=" ";
+
+        }
+
+        return $this->error_get_destination;
 
     }
 
-    public function define_num_palces ()
+    public function get_num_palces ()
     {
         return $this->number_palces;
     }
@@ -68,9 +78,32 @@ class Reservation_data
         return $this->number_palces;
     }
 
-    public function set1_num_places($new_number_places)
+    public function set_num_places($new_number_places)
     {
        return $this-> number_places=$new_number_places;
+    }
+
+
+    public function Error_get_number ()
+    {
+        if ($this->number_palces=" ")
+        {
+            $this->error_get_nbr_places="veuiller renter un nombre correct";
+        }
+        if ($this->number_palces!= is_numeric($this->number_palces) )
+        {
+            $this->error_get_nbr_places="ve";
+        }
+        if ($this->number_palces < 1 || $this->number_palces >= 11)
+        {
+            $this->error_get_nbr_places="pas bon";
+        }
+        else
+        {
+            $this->error_get_nbr_places=" ";
+        }
+
+        return $this->error_get_nbr_places;
     }
 
     public function add_passenger()

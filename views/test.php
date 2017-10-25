@@ -12,7 +12,7 @@
 
 <div id="page_1">
 
-    <form action="test2.php"  method="post">
+    <form action="index.php"  method="post">
 
 <h1>RESERVATION</h1>
 
@@ -28,26 +28,13 @@
 
 
 <table><tr><td><div>
-                <label for="destination"> Destination
-                    <select name="country" id= "country" class="form-controll" >
-                        <optgroup label="Europe">
-                            <option value="france">France</option>
-                            <option value="belgique">Belgique</option>
-                        </optgroup>
+                <br> <label for="destination"> Destination
+                    <input name="destination" id= "destination"
 
-                        <optgroup label="Amerique">
-                            <option value="canada">Canada</option>
-                        </optgroup>
-
-                        <optgroup label="Afrique">
-                            <option value="maroc">Maroc</option>
-                            <option value="tunisie">Tunisie</option>
-                            <option value="algerie">Algerie</option>
-                            <option value="togo">Togo</option>
-                            <option value="rwanda">Rwanda</option>
-                        </optgroup>
-                    </select>
-                </label> <br/>
+                    <?php
+                        echo 'value="'.$destination->get_destination().'"';
+                    ?>
+                      </input> </label> <br/>
 
 
 
