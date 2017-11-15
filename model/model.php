@@ -176,7 +176,10 @@ class Reservation
             $this->error_get_name="veuiller...";
 		}
 		
-		if ($this->name= " ")
+		if ($this->name= "" || $this->name= " ")
+		{
+            $this->error_get_name="veuiller...";
+		}
 			
 		
 		else
@@ -187,8 +190,12 @@ class Reservation
 		
 		
 		
-	public function ErrorAgege()
+	public function ErrorAge()
 	{
+		if ($this->age='' || $this->age= ' ' )
+        {
+            $this->error_get_age="veuiller...";
+		}
 		if ($this->age!= is_numeric($this->age) )
         {
             $this->error_get_name="veuiller...";
@@ -201,7 +208,7 @@ class Reservation
 		
 		else
 		{
-			 $this->error_get_age=' ';
+			 $this->error_get_age=''
 		}
 		return $this->error_get_age
 		
