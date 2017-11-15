@@ -1,16 +1,14 @@
 <?php
-
-class Reservation_data
+class Reservation
 {
     private $name;
     private $age;
     private $destination;
-    private $number_palces;
+    private $number_places;
     private $error;
     private $id=null;
 
-
-    public function __construct($name, $age,$id,$destination=" ", $number_places=" " )
+    public function __construct($name, $age, $id, $destination='', $number_places='')
     {
         if ($id = !null) {
             $this->id = $id;
@@ -19,39 +17,35 @@ class Reservation_data
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
-        $this->error_get_destination=" ";
-        $this-> error_get_nbr_places=" ";
+        $this->error_get_destination='';
+        $this->error_get_nbr_places='';
     }
 
-
-
-
-     public function return_id ()
+     public function return_id()
     {
         return $this->id;
     }
 
-    public function Get_destionation ()
+    public function Get_Destionation()
     {
         return $this->destination;
-
     }
 
-    public function set_destination ($new_destionation)
+    public function Set_Destination($new_destionation)
     {
-        return $this->destination= $new_destionation;
+		$this->destination = $new_destionation;
     }
 
-    public function Error_get_destination()
+    public function error_get_destination()
     {
-        if ($this->destination==" ")
+        if ($this->destination == '')
         {
-           $this-> error_get_destination="Veilleu....";
+           $this->error_get_destination = 'Veuillez choisir une destination';
         }
 
         if ($this->destination!=is_string($this->destination))
         {
-           $this-> error_get_destination="Veullier....";
+           $this->error_get_destination="Veullier....";
         }
 
         else
@@ -59,9 +53,7 @@ class Reservation_data
                 return $this->error_get_destination=" ";
 
         }
-
         return $this->error_get_destination;
-
     }
 
     public function get_num_palces ()
@@ -71,10 +63,10 @@ class Reservation_data
 
     public function set_num_palces()
     {
-        if ($this->number_palces < 1) {
+        if ($this->number_palces < 1)
+		{
             throw new Exception('Number of passengers is null');
         }
-
         return $this->number_palces;
     }
 
@@ -82,7 +74,6 @@ class Reservation_data
     {
        return $this-> number_places=$new_number_places;
     }
-
 
     public function Error_get_number ()
     {
@@ -102,7 +93,6 @@ class Reservation_data
         {
             $this->error_get_nbr_places=" ";
         }
-
         return $this->error_get_nbr_places;
     }
 
@@ -131,18 +121,4 @@ class Reservation_data
             return '';
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
