@@ -82,6 +82,11 @@ class Reservation
         }
         return $this->error_get_nbr_places;
     }
+	public function get_name()
+	{
+		return $this->name;
+	}
+	
 
     public function add_passenger()
     {
@@ -170,6 +175,9 @@ class Reservation
         {
             $this->error_get_name="veuiller...";
 		}
+		
+		if ($this->name= " ")
+			
 		
 		else
 		{
