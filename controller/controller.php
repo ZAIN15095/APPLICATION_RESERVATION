@@ -1,7 +1,7 @@
 <?php
 include_once 'model/model.php';
 
-if (session_status() == PHP_SESSION_NONE)
+if (isset(session_status()) == PHP_SESSION_NONE)
 {
     session_start();
 }
@@ -15,3 +15,4 @@ else
 {
     $reservation = new Reservation();
 }
+
