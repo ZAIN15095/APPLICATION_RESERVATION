@@ -18,6 +18,8 @@ class Reservation
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
+		$this->error_get_name=' '
+		$this->error_get_age=''
 		$this->checkbox = '';
 		$this->error_get_nbr_places='';
 		
@@ -156,6 +158,44 @@ public function get_checkbox()
 		{
 			return "not insurance";
 		}
+		
+		
+	}
+	
+	
+	public function ErrorName() 
+	{
+		if ($this->name!= is_string($this->name) )
+        {
+            $this->error_get_name="veuiller...";
+		}
+		
+		else
+		{
+			 $this->error_get_name=' ';
+		}
+		return $this->error_get_name
+		
+		
+		
+	public function ErrorAgege()
+	{
+		if ($this->age!= is_numeric($this->age) )
+        {
+            $this->error_get_name="veuiller...";
+		}
+		
+		if ($this->age <= 0 )
+        {
+            $this->error_get_age="veuiller...";
+		}
+		
+		else
+		{
+			 $this->error_get_age=' ';
+		}
+		return $this->error_get_age
+		
 		
 		
 	}
