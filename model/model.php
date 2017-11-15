@@ -10,15 +10,17 @@ class Reservation
 
     public function __construct($name, $age, $id, $destination='', $number_places='')
     {
-        if ($id = !null) {
+        if ($id = !null) 
+		{
             $this->id = $id;
         }
         $this->name = $name;
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
-        $this->error_get_destination='';
-        $this->error_get_nbr_places='';
+		$this->checkbox = '';
+		$this->error_get_nbr_places='';
+		
     }
 
      public function return_id()
@@ -26,35 +28,18 @@ class Reservation
         return $this->id;
     }
 
-    public function Get_Destionation()
+    public function get_Destionation()
     {
         return $this->destination;
     }
 
-    public function Set_Destination($new_destionation)
+    public function set_Destination($new_destionation)
     {
 		$this->destination = $new_destionation;
     }
 
-    public function error_get_destination()
-    {
-        if ($this->destination == '')
-        {
-           $this->error_get_destination = 'Veuillez choisir une destination';
-        }
 
-        if ($this->destination!=is_string($this->destination))
-        {
-           $this->error_get_destination="Veullier....";
-        }
-
-        else
-        {
-                return $this->error_get_destination=" ";
-
-        }
-        return $this->error_get_destination;
-    }
+    
 
     public function get_num_palces ()
     {
@@ -75,7 +60,7 @@ class Reservation
        return $this-> number_places=$new_number_places;
     }
 
-    public function Error_get_number ()
+    public function error_get_number_places()
     {
         if ($this->number_palces=" ")
         {
@@ -83,9 +68,9 @@ class Reservation
         }
         if ($this->number_palces!= is_numeric($this->number_palces) )
         {
-            $this->error_get_nbr_places="ve";
+            $this->error_get_nbr_places="veuiller...";
         }
-        if ($this->number_palces < 1 || $this->number_palces >= 11)
+        if ($this->number_palces < 1 || $this->number_palces >= 10)
         {
             $this->error_get_nbr_places="pas bon";
         }
@@ -121,4 +106,61 @@ class Reservation
             return '';
         }
     }
+	public function set_price()
+	{
+	$price=0
+    foreach ($this->age as $age)
+    {
+      if (is_numeric($age) && $age <= 12)
+      {
+        $price + = 10;
+      }
+      elseif (is_numeric($age) && $age > 13)
+      {
+        $price += 15;
+      }
+    }
+    if ($this->checkbutton == 'checked')
+    {
+      return $this->price + 20;
+    }
+    else
+    {
+      return $price;
+    }
+	}
+	
+public function get_checkbox()
+  {
+    return $this->checkbutton;
+  }
+  public function set_checkbox($value)
+  {
+    if ($value == 'insurance')
+    {
+      $this->checkbox = 'insurance';
+    }
+    else
+    {
+      $this->checkbox = '';
+    }
+	public function insurance()
+	{
+		if ($this->checkbox==insurance)
+		{
+			return "has insurance";
+			
+		}
+		
+		else 
+		{
+			return "not insurance";
+		}
+		
+		
+	}
+	
+	
+	
+	
 }
