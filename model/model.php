@@ -132,12 +132,13 @@ class Reservation
     }
 	}
 	
-public function get_checkbox()
-  {
+	public function get_checkbox()
+	{
     return $this->checkbutton;
-  }
-  public function set_checkbox($value)
-  {
+	}
+	
+	public function set_checkbox($value)
+	{
     if ($value == 'insurance')
     {
       $this->checkbox = 'insurance';
@@ -185,7 +186,7 @@ public function get_checkbox()
             $this->error_get_name="veuiller...";
 		}
 		
-		if ($this->age <= 0 )
+		if ($this->age <= 0 || $this->age > 120 )
         {
             $this->error_get_age="veuiller...";
 		}
