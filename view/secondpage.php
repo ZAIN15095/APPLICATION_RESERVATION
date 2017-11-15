@@ -11,7 +11,7 @@
 			<h1>Detail des réservations</h1>
 				<form method='post' action='router.php'>
 		<?php 
-		for($i = 0; $i < $reservation->get_num_palces ()(); $i++)
+		for($i = 0; $i < $reservation->get_num_palces (); $i++)
               		{
 			    $ErrorName = $reservation->ErrorName();
 			    $ErrorAge = $reservation->ErrorAge();
