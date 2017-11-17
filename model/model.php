@@ -6,15 +6,16 @@ class Reservation
     private $destination;
     private $number_places;
     private $error;
-    private $id=null;
+    private $id;
+    private $price;
 
-    public function __construct($name, $age, $id, $destination='', $number_places='')
+    public function __construct($name= '', $age='', $id= null, $destination='', $number_places='', $price=0)
     {
         if ($id = !null) 
 		{
             $this->id = $id;
         }
-        $this->name = $name;
+        $this->name =$name;
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
@@ -22,33 +23,32 @@ class Reservation
 		$this->error_get_age=''
 		$this->checkbox = '';
 		$this->error_get_nbr_places='';
+        $this->price= $price;
 		
     }
 
-     public function return_id()
+     public function get_id()
     {
         return $this->id;
     }
 
-    public function get_Destionation()
+    public function set_id($id)
+    {
+        retrun $this->id= $id;
+    }
+
+    public function get_destionation()
     {
         return $this->destination;
     }
 
-    public function set_Destination($new_destionation)
+    public function set_destination($destionation)
     {
-		$this->destination = $new_destionation;
+		$this->destination = $destionation;
     }
 
 
-    
-
-    public function get_num_palces ()
-    {
-        return $this->number_palces;
-    }
-
-    public function set_num_palces()
+    public function get_num_palces()
     {
         if ($this->number_palces < 1)
 		{
@@ -57,16 +57,16 @@ class Reservation
         return $this->number_palces;
     }
 
-    public function set_num_places($new_number_places)
+    public function set_num_places($number_places)
     {
-       return $this-> number_places=$new_number_places;
+       return $this-> number_places= $number_places;
     }
 
     public function error_get_number_places()
     {
-        if ($this->number_palces=" ")
+        if ($this->number_palces=''|| $this->number_places= ' ')
         {
-            $this->error_get_nbr_places="veuiller renter un nombre correct";
+            $this->error_get_nbr_places="veuiller renter un nombre";
         }
         if ($this->number_palces!= is_numeric($this->number_palces) )
         {
@@ -82,64 +82,102 @@ class Reservation
         }
         return $this->error_get_nbr_places;
     }
+
 	public function get_name()
 	{
-		return $this->name;
+		while(count($this->name) <= $this->number_palces)
+        {
+            return $this->name;
+        }
+            
 	}
-	
 
-    public function add_passenger()
+    public function set_name($name)
     {
-        if (count($this->name) < $this->number_palces)
+        return $this->name=$name;
+    }
+
+    public function get_error_name() 
+    {
+        if ($this->name!= is_string($this->name) )
         {
-            $this->number_places= count($this->name);
+            $this->error_get_name="veuiller...";
+        }
+        
+        if ($this->name= '' || $this->name= " ")
+        {
+            $this->error_get_name="veuiller...";
+        }
+            
+        
+        else
+        {
+             $this->error_get_name='';
+        }
+        return $this->error_get_name
+
+    public function get_age()
+    {
+       while (count($this->age)<=$this->number_palces)
+        {
+            return $this->age;
         }
     }
 
-    public function set_passenger($new_name)
+    public function set_age($age)
     {
-        return $this->name=$new_name;
+        return $this->age=age;
     }
 
-    public function add_age()
+    public function get-error-age()
     {
-        if (count($this->age)<$this->number_palces)
+        if ($this->age='' || $this->age= ' ' )
         {
-            $this->number_palces= count($this->age);
+            $this->error_get_age="veuiller...";
         }
-
-        if (!is_numeric($this->age) || $this->age < 1)
+        if ($this->age!= is_numeric($this->age) )
         {
-            return '';
+            $this->error_get_name="veuiller...";
         }
+        
+        if ($this->age <= 0 || $this->age > 120 )
+        {
+            $this->error_get_age="veuiller...";
+        }
+        
+        else
+        {
+             $this->error_get_age=''
+        }
+        return $this->error_get_age
     }
+
 	public function set_price()
 	{
-	$price=0
-    foreach ($this->age as $age)
-    {
-      if (is_numeric($age) && $age <= 12)
+      foreach ($this->age as $age)
+        {
+        if (is_numeric($age) && $age <= 12)
+            {
+                $this->price + = 10;
+            }
+        else (is_numeric($age) && $age > 13)
+            {
+                $this->price + = 15;
+            }
+        }
+      if ($this->checkbutton == 'checked')
       {
-        $price + = 10;
+            return $this->price + 20;
       }
-      elseif (is_numeric($age) && $age > 13)
+      else
       {
-        $price += 15;
+        return $this->price;
       }
-    }
-    if ($this->checkbutton == 'checked')
-    {
-      return $this->price + 20;
-    }
-    else
-    {
-      return $price;
-    }
 	}
 	
 	public function get_checkbox()
 	{
-    return $this->checkbutton;
+    return $this->checkbox;
 	}
 	
 	public function set_checkbox($value)
@@ -154,7 +192,7 @@ class Reservation
     }
 	public function insurance()
 	{
-		if ($this->checkbox==insurance)
+		if ($this->checkbox == insurance)
 		{
 			return "has insurance";
 			
@@ -169,52 +207,11 @@ class Reservation
 	}
 	
 	
-	public function ErrorName() 
-	{
-		if ($this->name!= is_string($this->name) )
-        {
-            $this->error_get_name="veuiller...";
-		}
-		
-		if ($this->name= "" || $this->name= " ")
-		{
-            $this->error_get_name="veuiller...";
-		}
-			
-		
-		else
-		{
-			 $this->error_get_name=' ';
-		}
-		return $this->error_get_name
+
 		
 		
 		
-	public function ErrorAge()
-	{
-		if ($this->age='' || $this->age= ' ' )
-        {
-            $this->error_get_age="veuiller...";
-		}
-		if ($this->age!= is_numeric($this->age) )
-        {
-            $this->error_get_name="veuiller...";
-		}
-		
-		if ($this->age <= 0 || $this->age > 120 )
-        {
-            $this->error_get_age="veuiller...";
-		}
-		
-		else
-		{
-			 $this->error_get_age=''
-		}
-		return $this->error_get_age
-		
-		
-		
-	}
+	
 	
 	
 	
