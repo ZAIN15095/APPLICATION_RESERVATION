@@ -12,17 +12,17 @@ class Reservation
     public function __construct($name= '', $age='', $id= null, $destination='', $number_places='', $price=0)
     {
         if ($id = !null) 
-		{
+	{
             $this->id = $id;
         }
         $this->name =$name;
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
-		$this->error_get_name=' '
-		$this->error_get_age=''
-		$this->checkbox = '';
-		$this->error_get_nbr_places='';
+	$this->error_get_name=' '
+	$this->error_get_age=''
+	$this->checkbox = '';
+	$this->error_get_nbr_places='';
         $this->price= $price;
 		
     }
@@ -44,14 +44,14 @@ class Reservation
 
     public function set_destination($destionation)
     {
-		$this->destination = $destionation;
+	retrun $this->destination = $destionation;
     }
 
 
     public function get_num_palces()
     {
         if ($this->number_palces < 1)
-		{
+	{
             throw new Exception('Number of passengers is null');
         }
         return $this->number_palces;
@@ -86,9 +86,9 @@ class Reservation
 	public function get_name()
 	{
 		while(count($this->name) <= $this->number_palces)
-        {
-            return $this->name;
-        }
+        	{
+            		return $this->name;
+        	}
             
 	}
 
@@ -108,9 +108,8 @@ class Reservation
         {
             $this->error_get_name="veuiller...";
         }
-            
         
-        else
+	else
         {
              $this->error_get_name='';
         }
@@ -129,7 +128,7 @@ class Reservation
         return $this->age=age;
     }
 
-    public function get-error-age()
+    public function get_error_age()
     {
         if ($this->age='' || $this->age= ' ' )
         {
