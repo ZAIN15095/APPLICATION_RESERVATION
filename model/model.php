@@ -1,7 +1,7 @@
 <?php
-class Reservation
+class Data_Reservation
 {
-    private $name;
+	private $name;
     private $age;
     private $destination;
     private $number_places;
@@ -11,7 +11,7 @@ class Reservation
 
     public function __construct($name= '', $age='', $id= null, $destination='', $number_places='', $price=0)
     {
-        if ($id = !null) 
+		if ($id = !null) 
 	{
             $this->id = $id;
         }
@@ -19,22 +19,22 @@ class Reservation
         $this->age = $age;
         $this->destination = $destination;
         $this->number_palces = $number_places;
-	$this->error_get_name=' '
-	$this->error_get_age=''
-	$this->checkbox = '';
-	$this->error_get_nbr_places='';
+		$this->error_get_name=' ';
+		$this->error_get_age='';
+		$this->checkbox = '';
+		$this->error_get_nbr_places='';
         $this->price= $price;
 		
     }
-
-     public function get_id()
+	
+	public function get_id()
     {
-        return $this->id;
+		return $this->id;
     }
 
     public function set_id($id)
     {
-        retrun $this->id= $id;
+        $this->id= $id;
     }
 
     public function get_destionation()
@@ -44,7 +44,7 @@ class Reservation
 
     public function set_destination($destionation)
     {
-	retrun $this->destination = $destionation;
+		$this->destination = $destionation;
     }
 
 
@@ -59,7 +59,7 @@ class Reservation
 
     public function set_num_places($number_places)
     {
-       return $this-> number_places= $number_places;
+		$this-> number_places= $number_places;
     }
 
     public function error_get_number_places()
@@ -80,21 +80,21 @@ class Reservation
         {
             $this->error_get_nbr_places=" ";
         }
-        return $this->error_get_nbr_places;
+		return $this->error_get_nbr_places;
     }
 
 	public function get_name()
 	{
 		while(count($this->name) <= $this->number_palces)
         	{
-            		return $this->name;
+				return $this->name;
         	}
             
 	}
 
     public function set_name($name)
     {
-        return $this->name=$name;
+        $this->name=$name;
     }
 
     public function get_error_name() 
@@ -109,11 +109,13 @@ class Reservation
             $this->error_get_name="veuiller...";
         }
         
-	else
-        {
-             $this->error_get_name='';
+		else
+		{
+            $this->error_get_name='';
         }
-        return $this->error_get_name
+		
+		return $this->error_get_name;
+	}
 
     public function get_age()
     {
@@ -125,7 +127,7 @@ class Reservation
 
     public function set_age($age)
     {
-        return $this->age=age;
+        $this->age=$age;
     }
 
     public function get_error_age()
@@ -146,33 +148,11 @@ class Reservation
         
         else
         {
-             $this->error_get_age=''
+             $this->error_get_age='';
         }
-        return $this->error_get_age
+        return $this->error_get_age;
     }
 
-	public function set_price()
-	{
-      foreach ($this->age as $age)
-        {
-        if (is_numeric($age) && $age <= 12)
-            {
-                $this->price + = 10;
-            }
-        else (is_numeric($age) && $age > 13)
-            {
-                $this->price + = 15;
-            }
-        }
-      if ($this->checkbutton == 'checked')
-      {
-            return $this->price + 20;
-      }
-      else
-      {
-        return $this->price;
-      }
-	}
 	
 	public function get_checkbox()
 	{
@@ -189,6 +169,8 @@ class Reservation
     {
       $this->checkbox = '';
     }
+	}
+	
 	public function insurance()
 	{
 		if ($this->checkbox == insurance)
@@ -205,14 +187,30 @@ class Reservation
 		
 	}
 	
-	
-
+	public function get_price()
+	{
+		foreach ($this->age as $age)
+		{
+			if (is_numeric($age) && $age <= 12)
+			{
+				$this->price += 10;
+			}
+			elseif (is_numeric($age) && $age > 13)
+			{
+				$this->price += 15;
+            }
+        }
 		
-		
-		
-	
-	
-	
-	
+		if ($this->checkbutton == 'insurance')
+		{
+			return $this->price + 20;
+		}
+			
+		else
+		{
+			return $this->price;
+		}
+	}
 	
 }
+?>
