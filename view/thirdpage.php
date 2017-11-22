@@ -9,7 +9,7 @@
   <body>
 
         <h1>Validation des reservations</h1>
-        <form method='Post' action='router.php'>
+        <form method='Post' action='index.php'>
 		
 		Destination<br />
 		

@@ -9,21 +9,22 @@
 	
 		<body>
 			<h1>Detail des réservations</h1>
-				<form method='post' action='router.php'>
-		<?php 
-		for($i = 0; $i < $reservation->get_num_palces (); $i++)
-              		{
-			    $ErrorName = $reservation->ErrorName();
-			    $ErrorAge = $reservation->ErrorAge();
-				Nom
-				<input type='text' name='names[]' maxlength='40'
-				value=  '".$reservation->get_name()[$i]."'/><br />
-				Age
+				<form method='post' action='index.php'>
 				
-				<input type='text' name='ages[]' maxlength='3'
+				<?php 
+				for($i = 0; $i < $reservation->get_num_palces (); $i++)
+				{
+					$ErrorName = $reservation->get_error_name() ;
+					$ErrorAge = $reservation->get_error_age();
+					
+					Nom
+					<input type='text' name='names[]' maxlength='40'>
+					value=  '".$reservation->get_name()[$i]."'/><br />
+					
+					Age
+					<input type='text' name='ages[]' maxlength='3'
 				value=''".$reservation->add_age()[$i]."'' placeholder = "Entrer l'âge"/>
-				
-			}	
+				}	
 					
 				<br /><br />
 				<input type='submit' value='Etape suivante'
@@ -34,7 +35,7 @@
 				
 				<input type='submit' value='Annuler la réservation'
 				name='cancel'/>
-				</form>
+				</form>?>
 			
 				
 		</body>

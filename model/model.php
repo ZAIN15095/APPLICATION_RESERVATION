@@ -37,7 +37,7 @@ class Data_Reservation
         $this->id= $id;
     }
 
-    public function get_destionation()
+    public function get_destination()
     {
         return $this->destination;
     }
@@ -50,10 +50,6 @@ class Data_Reservation
 
     public function get_num_palces()
     {
-        if ($this->number_palces < 1)
-	{
-            throw new Exception('Number of passengers is null');
-        }
         return $this->number_palces;
     }
 
