@@ -4,7 +4,7 @@ class Data_Reservation
     private $destination;
     private $number_places;
     private $checkbox;
-	private $name;
+    private $name;
     private $age;
     private $price;
     private $page;
