@@ -88,7 +88,6 @@ elseif (isset($_POST['number_places']) && empty($_POST['number_places']) && isse
 }
 
 elseif(!empty($_POST['backtofirst']))
-elseif(!empty($_POST['backtofirst']))
 {
     if ($reservation->current_page() == 'view/secondpage.php')
     {
