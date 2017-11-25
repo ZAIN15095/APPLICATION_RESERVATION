@@ -4,7 +4,7 @@ class Data_Reservation
     private $destination;
     private $number_places;
     private $checkbox;
-    private $name;
+	private $name;
     private $age;
     private $price;
     private $page;
@@ -21,8 +21,6 @@ class Data_Reservation
         $this->return = False;
         $this->error = $error;
         $this->page= 'view/firstpage.php';
-        $this->display_error_destination='';
-        $this->display_error_number= '';
     }
 
     public function get_destination()
@@ -33,6 +31,20 @@ class Data_Reservation
     public function set_destination($destination)
     {
 		$this->destination = $destination;
+    }
+
+    public function error_destination()
+    {
+        if ($this->destination == '' || $this->destination== ' '  )
+        {echo '*Veuillez rentrer une destination convenable';}
+        elseif (is_numeric($this->destination))
+        {echo '*Veuillez rentrer une destination convenable avec des lettres';}
+
+        else
+        {
+            echo '';
+        }
+
     }
 
     public function get_number_places()
@@ -47,6 +59,22 @@ class Data_Reservation
     public function set_number_places($number_places)
     {
         $this->number_places = $number_places;
+    }
+    public function error_number()
+    {
+        if($this->number_places != is_numeric($this->number_places))
+        {
+            echo "*Veuillez rentrer un chiffre correcte";
+        }
+        elseif($this->number_places < 1 || $this->number_places > 10)
+        {
+            echo "*Veuillez choisir le nombre de place adéquat";
+        }
+
+        else
+        {
+            echo '';
+        }
     }
 
     public function get_checkbox()
@@ -137,37 +165,6 @@ class Data_Reservation
     {
         return $this->page;
     }
-
-    public function error_destination()
-    {
-        if ($this->destination == '' )
-        {$this->display_error_destination = '*Veuillez rentrer une destination convenable';}
-        elseif (is_numeric($this->destination))
-        {$this->display_error_destination =  '*Veuillez rentrer une destination convenable avec des lettres';}
-
-        return $this->display_error_destination;
-
-    }
-
-    public function error_number()
-    {
-        if($this->number_places != is_numeric($this->number_places))
-        {
-            $this->display_error_number="*Veuillez rentrer un chiffre correcte";
-        }
-        elseif($this->number_places < 1 || $this->number_places > 10)
-        {
-            $this->display_error_number="*Veuillez choisir le nombre de place adéquat";
-        }
-
-        else
-            {
-                $this->display_error_number='';
-            }
-        return $this->display_error_number;
-    }
-
-
 
 }
 ?>

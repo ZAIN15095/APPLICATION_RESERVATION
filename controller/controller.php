@@ -88,19 +88,6 @@ elseif (isset($_POST['number_places']) && empty($_POST['number_places']) && isse
 }
 
 elseif(!empty($_POST['backtofirst']))
-{
-    if ($reservation->current_page() == 'view/secondpage.php')
-    {
-        $reservation->set_page('firstpage.php');
-        include 'view/firstpage.php';
-    }
-    elseif ($reservation->currentPage() == 'Third_page.php')
-    {
-        $reservation->setPage('Second_page.php');
-        $reservation->setPrice(0);
-        include 'view/secondpage.php';
-    }
-}
 elseif(!empty($_POST['backtofirst']))
 {
     if ($reservation->current_page() == 'view/secondpage.php')
