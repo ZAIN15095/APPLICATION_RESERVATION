@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link href='#' rel='stylesheet'>
+    <link href='view/css/style.css' rel='stylesheet'>
     <title>Confirmation</title>
 </head>
 <body>

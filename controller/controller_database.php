@@ -1,11 +1,11 @@
 <?php
-include_once 'model.php';
+include_once 'model/model.php';
 
 if (!isset($_SESSION))
     session_start();
 
-if (isset($_SESSION['Variable']) && isset($_SESSION['Variable']))
-    $reservation = unserialize($_SESSION['Variable']);
+if (isset($_SESSION['ID']) && isset($_SESSION['ID']))
+    $reservation = unserialize($_SESSION['ID']);
 
 else
     $reservation = new Reservation();
@@ -30,6 +30,5 @@ catch(Exception $e)
 {
     die('Erreur : '.$e->getMessage());
 }
-
 
 ?>
