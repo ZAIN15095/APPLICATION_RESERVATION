@@ -9,7 +9,18 @@
 <form method="POST" action="index.php">
     <h1>Validation des réservations</h1>
 
+<<<<<<< HEAD
     Destination
+=======
+        <h1>Validation des reservations</h1>
+        <form method='Post' action='index.php'>
+		
+		Destination<br />
+		
+		Nombre de places<br />
+		
+		Assurance annulation<br /><br />
+>>>>>>> 4f870c561aba0bf8c081c25327c2ec5e925534d3
 
     <?php echo $reservation->getDestination(); ?><br />
     Nombre de places
