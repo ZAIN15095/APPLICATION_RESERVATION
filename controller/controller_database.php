@@ -1,0 +1,35 @@
+<?php
+include_once 'model.php';
+
+if (!isset($_SESSION))
+    session_start();
+
+if (isset($_SESSION['Variable']) && isset($_SESSION['Variable']))
+    $reservation = unserialize($_SESSION['Variable']);
+
+else
+    $reservation = new Reservation();
+
+$dbname='Application';
+try
+{
+    $bdd = new PDO('mysql:host=localhost','root','');
+    $bdd->query("CREATE DATABASE IF NOT EXISTS $dbname");
+    $bdd->query("use $dbname");
+    $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Destination TEXT(30) NOT NULL,
+    Assurance BOOLEAN NOT NULL,
+    Total TEXT(50),
+    Nom TEXT(50),
+    Age TEXT(50)
+  )");
+}
+
+catch(Exception $e)
+{
+    die('Erreur : '.$e->getMessage());
+}
+
+
+?>
