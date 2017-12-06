@@ -10,11 +10,7 @@ if (isset($_SESSION['ID']) && isset($_SESSION['ID']))
 else
     $reservation = new Reservation();
 
-<<<<<<< HEAD
 $dbname = 'Application';
-=======
-$dbname='Application';
->>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
 try
 {
     $bdd = new PDO('mysql:host=localhost','root','');

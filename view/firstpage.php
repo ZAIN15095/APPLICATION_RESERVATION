@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5b78d728d9bd2dce478a85b4d9b0d73c6742ef35
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,6 +17,19 @@
 <form method="POST" action="index.php">
 
     <div class="container">
+<<<<<<< HEAD
+=======
+=======
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href='view/css/style.css' rel='stylesheet'>
+    <Title> Réservation </Title>
+</head>
+<body>
+<form method="POST" action="index.php">
+
+>>>>>>> 5b78d728d9bd2dce478a85b4d9b0d73c6742ef35
     <h1>Réservation</h1>
     <h3Prix des places </h2>
     <ul>
@@ -55,9 +72,20 @@
     ?>
 
     <br />
+<<<<<<< HEAD
     <input type="submit" class="button" name="next" value="suivant">
     <input type="submit" class="button" name="cancel" value="annuler"/>
     </div>
+=======
+
+    <input type="submit" class="button" name="next" value="suivant">
+    <input type="submit" class="button" name="cancel" value="annuler"/>
+    </div>
+
+    <input type="submit" class="button" name="continuer" value="suivant">
+    <input type="submit" class="button" name="annuler" value="annuler"/>
+
+>>>>>>> 5b78d728d9bd2dce478a85b4d9b0d73c6742ef35
 </form>
 </body>
 </html>
