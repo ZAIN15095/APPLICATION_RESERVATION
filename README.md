@@ -1,3 +1,3 @@
-# APPLICATION_RESERVATION
+# APPLICATION RESERVATION
 
-Mohammad Zain & Mroue Mohamad
+Mohammad Zain && Mroue Mohamad
