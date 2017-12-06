@@ -1,31 +1,117 @@
 <?php
 include_once 'model/model.php';
+include_once 'controller/controller_database.php';
 
-if (session_status() == PHP_SESSION_NONE)
-{
+if (!isset($_SESSION))
     session_start();
+
+$reservation = isset($_SESSION['ID']) && isset($_SESSION['ID']) ? unserialize($_SESSION['ID']) : new Reservation();
+
+if(empty($reservation->getDestination()) && empty($reservation->getPlace()) && empty($_POST["next"])){
+    $reservation->setErrorText(False);
+    include("view/firstpage.php");
 }
 
-if (isset($_SESSION['Data_reservation'])&& !empty($_SESSION['Data_reservation']))
+elseif(isset($_POST["next"]) && empty($_POST["cancel"]) && $reservation->analysePlace($_POST['number_places']) && !is_numeric($_POST['destination']) && $_POST['destination'] != ''){
+
+    if(isset($_POST['case']))
+        $reservation->setBox(True);
+    else
+        $reservation->setBox(False);
+
+    $reservation->setDestination($_POST['destination']);
+    $reservation->setPlace($_POST['number_places']);
+
+    $reservation->setPage(False);
+    $reservation->setErrorText(False);
+    include 'view/secondpage.php';
+}
+
+elseif(isset($_POST['previous_page'])) {
+    $reservation->setName($_POST['names']);
+    $reservation->setAge($_POST['ages']);
+    $reservation->setPage(True);
+    include 'view/firstpage.php';
+}
+
+elseif(isset($_POST['previous_page2'])){
+    $reservation->setPage(False);
+    $reservation->setPrice(0);
+    include 'view/secondpage.php';
+  }
+
+
+elseif(isset($_POST['continue']) && empty($_POST['cancel']) && isset($_POST['names']) && $_POST['names'] !=[] && isset($_POST["ages"]) && $_POST["ages"] != [] && !$reservation->getNameError()
+    && !$reservation->getAgeError())
 {
-    $reservation = unserialize($_SESSION['Data_reservation']);
+    $reservation->setAge($_POST['ages']);
+    $reservation->setName($_POST['names']);
+    include 'view/thirdpage.php';
+}
+
+elseif(isset($_POST['confirm'])){
+    $dest = $reservation->getDestination();
+    $assurance = $reservation->getBox();
+    $total = $reservation->getPrice();
+    $names = implode(',', $reservation->getName());
+    $ages = implode(',', $reservation->getAge());
+
+    if($assurance==True)
+        $assurance=1;
+    else
+        $assurance=0;
+
+    if($reservation->stateUpdate()==False)
+        $sql="INSERT INTO Reservation (Destination, Assurance, Total, Nom, Age) VALUES ('$dest', '$assurance', '$total', '$names', '$ages')";
+
+    else{
+        $id=$reservation->idUpdate();
+        $sql="UPDATE Reservation SET Destination='$dest', Assurance='$assurance', Total='$total', Nom='$names', Age='$ages' WHERE id='$id'";
+    }
+
+    $stmt = $bdd->prepare($sql);
+    $exec=$stmt->execute();
+    include 'view/fourthpage.php';
+}
+
+elseif(isset($_POST['cancel'])){
+    $reservation->setErrorText(False);
+    unset($reservation);
+    include 'view/firstpage.php';
 }
 
 else
 {
-    $reservation = new Data_reservation();
+    $reservation->setErrorText(True);
+
+    if($reservation->currentPage()==True)
+    {
+        $reservation->setDestination($_POST['destination']);
+        $reservation->setPlace($_POST['number_places']);
+        if(isset($_POST['case'])){
+            $reservation->setBox(True);
+    }
+
+    else{
+            $reservation->setBox(False);
+        }
+        include 'view/firstpage.php';
+    }
+
+    elseif($reservation->currentPage()==False){
+        if (isset($_POST['names']) && isset ($_POST['ages'])) {
+            $reservation->setName($_POST['names']);
+            $reservation->setAge($_POST['ages']);;
+        }
+
+        include 'view/secondpage.php';
+    }
 }
 
-if(empty($reservation->get_destination()) && empty($reservation->get_num_palces()) && empty($_POST["détails"])){
-  include("view/firstpage.php");
-  
-}
+if (isset($reservation) && empty($_POST['cancel']))
+    $_SESSION['ID'] = serialize($reservation);
 
-if (isset($_POST['details'])) {
-	
-	include("view/secondpage.php");
-}
-
-
+if(isset($_POST['cancel']))
+    session_unset();
 
 ?>

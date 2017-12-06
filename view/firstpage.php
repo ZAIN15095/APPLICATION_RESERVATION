@@ -1,41 +1,63 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Réservation</title>
-		<link href='view/style.css' rel='stylesheet'>
-	</head>
+<html lang="fr">
+<head>
+    <title>RESERVATION</title>
+    <meta content-type="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-	<body>
-		<h1>RESERVATION</h1>
-		<h3>Prix des places </h3>
-		<ul>
-			<li> Moins de 12 ans = 10 euros </li>
-			<li> Plus de 12 ans = 15 euros</li>
-		</ul>
-		
-		<h4>L'assurance vous reviens à 20 euros quel que soit le nombre de voyageurs</h4>
-				
-			<form action="index.php"  method="post">
-			
-			Destination
-			<input type='text' name='destination' maxlength="40"
-			value='<?php if (isset($reservation))
-				echo $reservation->get_destination()?>'
-			placeholder='Entrer la destination'/><br>
-			
-			Nombre de places
-			<input type='text' name='nbr_places' maxlength="2"
-			value='<?php if (isset($reservation))
-				echo $reservation->get_num_palces()?>'
-			placeholder='Entrer le nombre de places'/><br>
-			
-			Assurance annulation
-			<input type='checkbox' name='insurance'>
-			
-				<button type="submit" name="details">Suivant</button>
-				<button type="submit" name="cancel">Annulation</button>
-				
-			</form>
-	</body>
+<form method="POST" action="index.php">
+
+    <div class="container">
+    <h1>Réservation</h1>
+    <h3Prix des places </h2>
+    <ul>
+        <li> Moins de 12 ans = 10 euros </li>
+        <li> Plus de 12 ans = 15 euros</li>
+    </ul>
+    <h4>L'assurance vous reviens à 20 euros quel que soit le nombre de voyageurs</h4>
+
+    Destination
+
+    <input type="text" value='<?php if(isset($reservation)) echo $reservation->getDestination()?>' name="destination" placeholder = 'Entrer la destination'/>
+
+    <?php
+    if(isset($reservation)){
+        if($reservation->getErrorText() && ($reservation->getDestination()=="" || is_numeric($reservation->getDestination())))
+            echo "<error> Veuillez entrer une destination valide </error>";
+    }
+    ?>
+
+    <br />
+    Nombre de places
+
+    <input type="text" value='<?php if(isset($reservation)) echo $reservation->getPlace() ?>' name="number_places" placeholder = 'Entrer le nombre de places'/>
+
+    <?php
+    if(isset($reservation)){
+        if($reservation->getErrorText() && ($reservation->getPlace()=="" || (int)($reservation->getPlace())<=0 || (int)($reservation->getPlace())>10))
+            echo "<error> Il faut qu'il y ait minimum une place et maximum 10 places </error>";
+    }
+    ?>
+
+    <br />
+    Assurance
+
+    <?php
+    echo "<input type=\"checkbox\" name=\"case\" value=\"case\"";
+    if(isset($reservation) && $reservation->getBox())
+        echo "checked";
+    echo "/>";
+    ?>
+
+    <br />
+    <input type="submit" class="button" name="next" value="suivant">
+    <input type="submit" class="button" name="cancel" value="annuler"/>
+    </div>
+</form>
+</body>
 </html>
