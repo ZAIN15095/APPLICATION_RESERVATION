@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,6 +17,20 @@
     Merci de bien vouloir verser <?php echo $reservation->getPrice() ?> euros sur le compte 000-000000-00.<br />
     <input type='submit' value="Retour à la page d'accueil" class="button" name='cancel'>
     </div>
+=======
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href='view/css/style.css' rel='stylesheet'>
+    <title>Confirmation</title>
+</head>
+<body>
+<form method='POST' action="index.php">
+    <h1>Confirmation des réservations</h1>
+    Votre demande a bien été enregistrée.
+    Merci de bien vouloir verser <?php echo $reservation->getPrice() ?> euros sur le compte 000-000000-00.<br />
+    <input type='submit' value="Retour à la page d'accueil" class="button" name='annuler'>
+>>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
 </form>
 </body>
 </html>

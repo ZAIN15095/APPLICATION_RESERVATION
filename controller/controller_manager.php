@@ -31,10 +31,18 @@ catch(Exception $e)
   die('Erreur : '.$e->getMessage());
 }
 
+<<<<<<< HEAD
 $reponse = $bdd->query('SELECT * FROM Reservation');
 
 if(empty($_POST))
     include('view/manager.php');
+=======
+$reponse=$bdd->query('SELECT * FROM Reservation');
+
+if(empty($_POST)){
+    include('view/manager.php');
+}
+>>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
 
 if(!empty($_POST)){
     while($donnees = $reponse->fetch()){
