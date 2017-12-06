@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,15 +10,6 @@
 </head>
 <body>
 
-=======
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link href='view/css/style.css' rel='stylesheet'>
-    <title> Reservation -- Détails </title>
-</head>
-<body>
->>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
 <form method="POST" action="index.php?name=manager">
     <h1>Liste des réservations</h1>
     Id

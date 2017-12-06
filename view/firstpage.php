@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -14,16 +13,6 @@
 <form method="POST" action="index.php">
 
     <div class="container">
-=======
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link href='view/css/style.css' rel='stylesheet'>
-    <Title> Réservation </Title>
-</head>
-<body>
-<form method="POST" action="index.php">
->>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
     <h1>Réservation</h1>
     <h3Prix des places </h2>
     <ul>
@@ -66,15 +55,9 @@
     ?>
 
     <br />
-<<<<<<< HEAD
     <input type="submit" class="button" name="next" value="suivant">
     <input type="submit" class="button" name="cancel" value="annuler"/>
     </div>
-=======
-    <input type="submit" class="button" name="continuer" value="suivant">
-    <input type="submit" class="button" name="annuler" value="annuler"/>
-
->>>>>>> 4fa4dc909e181c3d8db06b7676a77732f20715b2
 </form>
 </body>
 </html>
