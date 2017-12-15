@@ -10,19 +10,19 @@ if (isset($_SESSION['ID']) && !empty($_SESSION['ID']))
 else
     $reservation = new Reservation();
 
-$dbname='Application';
+$dbname='Data';
 try
 {
     $bdd = new PDO('mysql:host=localhost','root','');
     $bdd->query("CREATE DATABASE IF NOT EXISTS $dbname");
     $bdd->query("use $dbname");
-    $bdd->query("CREATE TABLE IF NOT EXISTS Reservation(
+    $bdd->query  ("CREATE TABLE IF NOT EXISTS Reservation(
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-estination TEXT(30) NOT NULL,
+Destination TEXT(30) NOT NULL,
 Assurance BOOLEAN NOT NULL,
 Total TEXT(50),
-Nom TEXT(50),
-Age TEXT(50)
+nl2br(Nom) TEXT(50),
+nl2br(Age) TEXT(50)
 )");
 }
 

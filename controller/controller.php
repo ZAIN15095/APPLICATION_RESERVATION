@@ -41,8 +41,7 @@ elseif(isset($_POST['previous_page2'])){
   }
 
 
-elseif(isset($_POST['continue']) && empty($_POST['cancel']) && isset($_POST['names']) && $_POST['names'] !=[] && isset($_POST["ages"]) && $_POST["ages"] != [] && !$reservation->getNameError()
-    && !$reservation->getAgeError())
+elseif(isset($_POST['continue']) && empty($_POST['cancel']))
 {
     $reservation->setAge($_POST['ages']);
     $reservation->setName($_POST['names']);

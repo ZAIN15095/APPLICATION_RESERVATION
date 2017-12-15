@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        function myFunction() {
+            document.getElementsByTagName("input")[0].removeAttribute("required");
+            document.getElementsByTagName("input")[1].removeAttribute("required");
+        }
+    </script>
+
 </head>
 <body>
 <form method="POST" action="index.php">
@@ -19,7 +27,7 @@
 
         echo "<br /><br /><div><label for='uname'>Nom</label>"."<input type='text' id='uname' name='names[]' required size='45'
         pattern='[A-Za-z]{1,15}' value='".$reservation->getName()[$i]."' placeholder = 'Entrer le nom' /> <span class='validity'></span>
-        <p>Names must be 1-15 characters in length.</p></div>";
+        <p>Les noms doivent comporter entre 1 et 15 caractères.</p></div>";
 
 
         if (isset($reservation)) {
@@ -29,7 +37,7 @@
 
         echo "<br /><div><label for='uage'>Age</label>"."<input type='text' id='uage' name='ages[]' required size='45'
         pattern='[1-9]{0,1}[0-9]{1,3}' value='".$reservation->getAge()[$i]."' placeholder = 'Entrer l âge' /> <span class='validity'></span>
-        <p>Ages must be maximum 3 characters in length.</p></div>";
+        <p>Les âges doivent avoir au maximum 3 caractères.</p></div>";
 
         if(isset($reservation)) {
             if ($reservation->getErrorText() && $reservation->getAgeError())
@@ -41,9 +49,9 @@
 
     ?>
     <br />
-    <input type='submit' class="button" name='previous_page' value='page précedente'/>
+    <input type='submit' class="button" onclick="myFunction()" name='previous_page' value='page précedente'/>
     <input type='submit' class="button" name='continue' value='continuer'/>
-    <input type='submit' class="button" name='cancel' value='annuler'/>
+    <input type='submit' class="button" onclick="myFunction()" name='cancel' value='annuler'/>
     </div>
 </form>
 </body>

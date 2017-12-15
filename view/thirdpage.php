@@ -40,7 +40,7 @@
     </div>
 
     <div class="container">
-    <h1>Passenger details</h1>
+    <h1>Validation des passagers</h1>
     <table class="table table-condensed">
         <thead>
         <tr>
@@ -82,17 +82,6 @@
 
     </div>
 
-
-
-
-
-
-
 </form>
 </body>
 </html>
-
-
-
-
-
