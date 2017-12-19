@@ -11,16 +11,16 @@
 
     <script>
         function myFunction() {
-<<<<<<< HEAD
+
 
             <?php
             for($i=0; $i < $reservation->getPlace()*2; $i++) {
                 echo "document.getElementsByTagName('input')[$i].removeAttribute('required');";
             }?>
-=======
+
             document.getElementsByTagName("input")[0].removeAttribute("required");
             document.getElementsByTagName("input")[1].removeAttribute("required");
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
         }
     </script>
 
@@ -56,7 +56,7 @@
     echo '<br />';
 
     ?>
-<<<<<<< HEAD
+
         <br />
 
         <div class="btn-group">
@@ -64,12 +64,12 @@
             <input type='submit' class="btn btn-primary" name='continue' value='continuer'/>
             <input type='submit' class="btn btn-primary" onclick="myFunction()" name='cancel' value='annuler'/>
         </div>
-=======
+
     <br />
     <input type='submit' class="button" onclick="myFunction()" name='previous_page' value='page précedente'/>
     <input type='submit' class="button" name='continue' value='continuer'/>
     <input type='submit' class="button" onclick="myFunction()" name='cancel' value='annuler'/>
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
     </div>
 </form>
 </body>
