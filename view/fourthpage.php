@@ -14,10 +14,14 @@
     <h1>Confirmation des réservations</h1>
     Votre demande a bien été enregistrée.
     Merci de bien vouloir verser <?php echo $reservation->getPrice() ?> euros sur le compte 000-000000-00.<br />
+<<<<<<< HEAD
 
         <div class="btn-group">
             <input type='submit' value="Retour à la page d'accueil" class="btn btn-primary" name='cancel'>
         </div>
+=======
+    <input type='submit' value="Retour à la page d'accueil" class="button" name='cancel'>
+>>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
     </div>
 </form>
 </body>
