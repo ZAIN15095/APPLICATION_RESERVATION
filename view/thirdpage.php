@@ -14,11 +14,11 @@
     <div class="container">
         <h1>Validation des réservations</h1>
 
-<<<<<<< HEAD
+
         <table class="table table-bordered">
-=======
+
         <table class="table table-condensed">
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
             <thead>
             <tr>
                 <th>Destination</th>
@@ -58,34 +58,33 @@
                 <?php
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
-<<<<<<< HEAD
+
                     echo $reservation->getName()[$i].'<br /><br/>';
 
                 }
                 ?>
 
 
-=======
-                    echo $reservation->getName()[$i].'<br />';
+                   echo $reservation->getName()[$i].'<br />';
 
                 }
                 ?>
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
             </td>
             <td>
                 <?php
                 for ($i = 0; $i < $reservation->getPlace(); $i++)
                 {
-<<<<<<< HEAD
+
                     echo $reservation->getAge()[$i].'<br /><br/>';
-=======
+
                     echo $reservation->getAge()[$i].'<br />';
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
 
                 }
                 ?>
             </td>
-<<<<<<< HEAD
+
 
         </tr>
 
@@ -99,7 +98,7 @@
             <input type='submit' class="btn btn-primary" name='cancel' value='annuler'/>
 
         </div>
-=======
+
 
         </tr>
 
@@ -112,7 +111,6 @@
         <input type='submit' class="button" name='cancel' value='annuler'/>
 
 
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
     </div>
 
 </form>
