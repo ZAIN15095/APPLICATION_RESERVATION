@@ -4,10 +4,7 @@
     <title>RESERVATION</title>
     <meta content-type="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
     <link href='view/css/style.css' rel='stylesheet'>
-=======
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,10 +14,8 @@
 <form method="POST" action="index.php">
 
     <div class="container">
-<<<<<<< HEAD
+
         <div class="center">
-=======
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
     <h1>Réservation</h1>
     <h3Prix des places </h2>
     <ul>
@@ -62,7 +57,7 @@
     echo "/>";
     ?>
 
-<<<<<<< HEAD
+
         <br /><br />
 
 
@@ -73,12 +68,12 @@
         </div>
     </div>
 
-=======
+
     <br />
     <input type="submit" class="button" name="next" value="suivant">
     <input type="submit" class="button" name="cancel" value="annuler"/>
     </div>
->>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+
 </form>
 </body>
 </html>
