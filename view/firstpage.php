@@ -1,11 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8" />
+    <title>RESERVATION</title>
+    <meta content-type="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='view/css/style.css' rel='stylesheet'>
-    <Title> Réservation </Title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+
 <form method="POST" action="index.php">
+
+    <div class="container">
+        <div class="center">
     <h1>Réservation</h1>
     <h3Prix des places </h2>
     <ul>
@@ -21,7 +30,7 @@
     <?php
     if(isset($reservation)){
         if($reservation->getErrorText() && ($reservation->getDestination()=="" || is_numeric($reservation->getDestination())))
-            echo "<error> Veuillez entrer une destination valide </error>";
+            echo "<error><code> Veuillez entrer une destination valide</code> </error>";
     }
     ?>
 
@@ -33,7 +42,7 @@
     <?php
     if(isset($reservation)){
         if($reservation->getErrorText() && ($reservation->getPlace()=="" || (int)($reservation->getPlace())<=0 || (int)($reservation->getPlace())>10))
-            echo "<error> Il faut qu'il y ait minimum une place et maximum 10 places </error>";
+            echo "<error><code> Il faut qu'il y ait minimum une place et maximum 10 places</code> </error>";
     }
     ?>
 
@@ -47,9 +56,15 @@
     echo "/>";
     ?>
 
-    <br />
-    <input type="submit" class="button" name="continuer" value="suivant">
-    <input type="submit" class="button" name="annuler" value="annuler"/>
+        <br /><br />
+
+
+        <div class="btn-group">
+            <input type="submit" class="btn btn-primary" name="next" value="suivant">
+            <input type="submit" class="btn btn-primary" name="cancel" value="annuler"/>
+        </div>
+        </div>
+    </div>
 
 </form>
 </body>

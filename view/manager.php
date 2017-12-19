@@ -1,49 +1,176 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8" />
-    <link href='view/css/style.css' rel='stylesheet'>
     <title> Reservation -- Détails </title>
+    <meta content-type="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href='view/css/style.css' rel='stylesheet'>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+
 <form method="POST" action="index.php?name=manager">
-    <h1>Liste des réservations</h1>
-    Id
-    Destination
-    Assurance
-    Total
-    Nom
-    Age
-    Editer
-    Supprimer
 
-    <?php
-    $reponse=$bdd->query('SELECT * FROM Reservation');
-    while($donnees = $reponse->fetch()){
+    <div class="container">
+        <h1>Liste des réservations</h1>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Destination</th>
+                <th>Assurance</th>
+                <th> Total</th>
+                <th>Nom</th>
+                <th>Age</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <br />
+            <tr>
+                <td>
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
 
-        echo $donnees['id'].$donnees['Destination'].'<br />';
-        if($donnees['Assurance']==1)
-            $assurance='OUI';
-        else
-            $assurance='NON';
+                        echo $donnees['id'].'<br /><br />';
+                    }
 
-        echo $assurance.$donnees['Total'].'<br />';
+                    ?>
+                </td>
+                <td>
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
 
-        $list=explode(":", $donnees['Nom']);
-        $list2=explode(":", $donnees['Age']);
+                        echo $donnees['Destination'].'<br /><br />';
+                    }
 
-        for($i=0;$i<count($list);$i++){
-            echo $list[$i];
-            echo $list2[$i];
-            $i=$i+1;
-        }
+                    ?>
+                </td>
+                <td>
 
-        echo '<input type="submit" class="buttonEditer" value="Editer" name="'.$donnees['id'].'"><input type="submit" class="buttonSupprimer" value="Supprimer" name="';
-        echo "Suppress".$donnees['id'];
-        echo '">';
-    }
-    ?>
-    <br />
-    <input type='submit' value='Nouvelle réservation' class="buttonNew" name='Nouvelle_reservation'>
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        if($donnees['Assurance']==1)
+                            $assurance='OUI';
+                        else
+                            $assurance='NON';
+
+                        echo $assurance.'<br /><br />';
+
+
+                    }
+                    ?>
+                </td>
+                <td>
+
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        echo $donnees['Total']. '<br /><br />';
+
+
+                    }
+                    ?>
+                </td>
+                <td>
+
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        $list = explode(":", $donnees['Nom']);
+
+
+                        for ($i = 0; $i < count($list); $i++)
+                        {
+                            echo  $list[$i]. '<br /><br />' ;
+
+                            $i = $i + 1;
+                        }
+
+
+                    }
+                    ?>
+                </td>
+
+                <td>
+
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        $list2 = explode(":", $donnees['Age']);
+
+
+                        for ($i = 0; $i < count($list); $i++)
+                        {
+                            echo  $list2[$i]. '<br /><br />' ;
+
+                            $i = $i + 1;
+                        }
+
+
+                    }
+                    ?>
+                </td>
+
+                <td>
+
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        echo '<input type="submit" class="btn btn-info btn-xs" value="Editer" name="' . $donnees['id'] . '">' . '<br /><br />';
+
+                    }
+                    ?>
+                </td>
+
+
+
+                <td>
+
+                    <?php
+                    $reponse=$bdd->query('SELECT * FROM Reservation');
+                    while($donnees = $reponse->fetch())
+                    {
+                        echo '<input type="submit" class="btn btn-info btn-xs" value="Supprimer" name="' . "Suppress" . $donnees['id'] . '">' . '<br /><br />';
+
+
+                    }
+                    ?>
+                </td>
+
+
+
+            </tr>
+            </tbody>
+        </table>
+
+
+        <div class="btn-group">
+
+            <input type='submit' value='Nouvelle réservation' class="btn btn-primary" name='Nouvelle_reservation'>
+        </div>
+    </div>
+
+
+
+
+
+
+
 </form>
 </body>
 </html>

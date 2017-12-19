@@ -1,15 +1,26 @@
-h1 {
-    font-size: 4rem;
-    margin-top: 50px;
-    text-align: center;
+div {
+    margin-bottom: 10px;
+    position: relative;
 }
 
-table {
-  border-width:2px; 
-  border-style:solid; 
-  border-color:red ;
-  width:50%;
+p {
+    font-size: 80%;
+    color: #999;
 }
 
+input + span {
+    padding-right: 30px;
+}
 
+input:invalid+span:after {
+    position: absolute;
+    content: '✖';
+    padding-left: 5px;
+}
+
+input:valid+span:after {
+    position: absolute;
+    content: '✓';
+    padding-left: 5px;
+}
 

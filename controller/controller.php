@@ -5,18 +5,14 @@ include_once 'controller/controller_database.php';
 if (!isset($_SESSION))
     session_start();
 
-if (isset($_SESSION['ID']) && isset($_SESSION['ID']))
-    $reservation = unserialize($_SESSION['ID']);
+$reservation = isset($_SESSION['ID']) && isset($_SESSION['ID']) ? unserialize($_SESSION['ID']) : new Reservation();
 
-else
-    $reservation = new Reservation();
-
-if(empty($reservation->getDestination()) && empty($reservation->getPlace()) && empty($_POST["continuer"])){
+if(empty($reservation->getDestination()) && empty($reservation->getPlace()) && empty($_POST["next"])){
     $reservation->setErrorText(False);
     include("view/firstpage.php");
 }
 
-elseif(isset($_POST["continuer"]) && empty($_POST["annuler"]) && $reservation->analysePlace($_POST['number_places']) && !is_numeric($_POST['destination']) && $_POST['destination'] != ''){
+elseif(isset($_POST["next"]) && empty($_POST["cancel"]) && $reservation->analysePlace($_POST['number_places']) && !is_numeric($_POST['destination']) && $_POST['destination'] != ''){
 
     if(isset($_POST['case']))
         $reservation->setBox(True);
@@ -31,30 +27,28 @@ elseif(isset($_POST["continuer"]) && empty($_POST["annuler"]) && $reservation->a
     include 'view/secondpage.php';
 }
 
-elseif(isset($_POST['page_precedente'])) {
+elseif(isset($_POST['previous_page'])) {
     $reservation->setName($_POST['names']);
     $reservation->setAge($_POST['ages']);
     $reservation->setPage(True);
     include 'view/firstpage.php';
 }
 
-elseif(isset($_POST['page_precedente2'])){
+elseif(isset($_POST['previous_page2'])){
     $reservation->setPage(False);
     $reservation->setPrice(0);
     include 'view/secondpage.php';
   }
 
 
-elseif(isset($_POST['confirmer']) && empty($_POST['annuler']) && isset($_POST['names']) && $_POST['names'] !=[] && isset($_POST["ages"]) && $_POST["ages"] != [] && !$reservation->getNameError()
-    && !$reservation->getAgeError())
+elseif(isset($_POST['continue']) && empty($_POST['cancel']))
 {
     $reservation->setAge($_POST['ages']);
     $reservation->setName($_POST['names']);
-
     include 'view/thirdpage.php';
 }
 
-elseif(isset($_POST['suivant'])){
+elseif(isset($_POST['confirm'])){
     $dest = $reservation->getDestination();
     $assurance = $reservation->getBox();
     $total = $reservation->getPrice();
@@ -67,7 +61,7 @@ elseif(isset($_POST['suivant'])){
         $assurance=0;
 
     if($reservation->stateUpdate()==False)
-        $sql="INSERT INTO Reservation (Destination, Assurance, Total, Nom, Age) VALUES ('$dest','$assurance','$total','$names', '$ages')";
+        $sql="INSERT INTO Reservation (Destination, Assurance, Total, Nom, Age) VALUES ('$dest', '$assurance', '$total', '$names', '$ages')";
 
     else{
         $id=$reservation->idUpdate();
@@ -79,7 +73,7 @@ elseif(isset($_POST['suivant'])){
     include 'view/fourthpage.php';
 }
 
-elseif(isset($_POST['annuler'])){
+elseif(isset($_POST['cancel'])){
     $reservation->setErrorText(False);
     unset($reservation);
     include 'view/firstpage.php';
@@ -88,6 +82,7 @@ elseif(isset($_POST['annuler'])){
 else
 {
     $reservation->setErrorText(True);
+
     if($reservation->currentPage()==True)
     {
         $reservation->setDestination($_POST['destination']);
@@ -112,11 +107,10 @@ else
     }
 }
 
-if (isset($reservation) && empty($_POST['annuler']))
+if (isset($reservation) && empty($_POST['cancel']))
     $_SESSION['ID'] = serialize($reservation);
 
-
-if(isset($_POST['annuler']))
+if(isset($_POST['cancel']))
     session_unset();
 
 ?>

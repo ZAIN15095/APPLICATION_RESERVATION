@@ -10,7 +10,7 @@ if (isset($_SESSION['ID']) && !empty($_SESSION['ID']))
 else
     $reservation = new Reservation();
 
-$dbname='Application';
+$dbname='Data';
 try
 {
     $bdd = new PDO('mysql:host=localhost','root','');
@@ -31,11 +31,10 @@ catch(Exception $e)
   die('Erreur : '.$e->getMessage());
 }
 
-$reponse=$bdd->query('SELECT * FROM Reservation');
+$reponse = $bdd->query('SELECT * FROM Reservation');
 
-if(empty($_POST)){
+if(empty($_POST))
     include('view/manager.php');
-}
 
 if(!empty($_POST)){
     while($donnees = $reponse->fetch()){
