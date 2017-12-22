@@ -7,10 +7,9 @@ class Reservation
     private $age;
     private $page;
     private $error;
-    private $box;
+    private $checkbox;
     private $price;
     private $update;
-    private $idUpdate;
 
     public function __construct($destination = '', $number_places = '')
     {
@@ -20,11 +19,12 @@ class Reservation
         $this->age = [];
         $this->page = True;
         $this->error = False;
-        $this->box = False;
+        $this->checkbox = False;
         $this->price = 0;
         $this->update = False;
     }
 
+    // Getters and Setters
     public function getDestination()
     {
         return $this->destination;
@@ -59,28 +59,11 @@ class Reservation
         $this->name = $names;
     }
 
-    public function analyseAge($age)
-    {
-        foreach ($this->age as $age){
-            if (is_numeric($age) || $age == "" || (int)($age) <= 0 || (int)($age) >= 100) {
-                return False;
-            }
-            return True;
-        }
-    }
-
     public function getAge()
     {
         while (count($this->age) < $this->number_places)
         {
             array_push($this->age, '');
-        }
-        for($i = 0; $i < count($this->age); $i++)
-        {
-            if (!is_numeric($this->age[$i]) || $this->age[$i] < 1)
-            {
-                $this->age[$i] = '';
-            }
         }
         return $this->age;
     }
@@ -90,12 +73,9 @@ class Reservation
         $this->age = $ages;
     }
 
-    public function analysePlace($places)
+    public function getPage()
     {
-        if ((int)$places <= 10 && is_numeric($places) && (int)$places > 0) {
-            return True;
-        }
-        return False;
+        return $this->page;
     }
 
     public function setPage($page)
@@ -103,32 +83,17 @@ class Reservation
         $this->page = $page;
     }
 
-    public function currentPage()
+    public function getCheckBox()
     {
-        return $this->page;
+        return $this->checkbox;
     }
 
-    public function setErrorText($error)
+    public function setCheckBox($checkbox)
     {
-        $this->error = $error;
+        $this->checkbox = $checkbox;
     }
 
-    public function getErrorText()
-    {
-        return $this->error;
-    }
-
-    public function setBox($box)
-    {
-        $this->box = $box;
-    }
-
-    public function getBox()
-    {
-        return $this->box;
-    }
-
-    public function stateUpdate()
+    public function getStateUpdate()
     {
         return $this->update;
     }
@@ -137,17 +102,6 @@ class Reservation
     {
         $this->update = $update;
     }
-
-    public function idUpdate()
-    {
-        return $this->idUpdate;
-    }
-
-    public function setIdUpdate($idUpdate)
-    {
-        $this->idUpdate = $idUpdate;
-    }
-
 
     public function getPrice()
     {
@@ -159,7 +113,7 @@ class Reservation
             elseif (is_numeric($age) && $age > 12)
                 $price += 15;
         }
-        if ($this->box == True)
+        if ($this->checkbox == True)
             return $price + 20;
 
         else
@@ -171,26 +125,84 @@ class Reservation
         return $this->price;
     }
 
-    public function getNameError()
+    public function getIdUpdate()
     {
-        foreach ($this->name as $name) {
-            if (is_numeric($name) || $name == "") {
-                return True;
-            }
-            return False;
-        }
+        return $this->idUpdate;
     }
 
-
-    public function getAgeError()
+    public function setIdUpdate($idUpdate)
     {
-        foreach ($this->age as $age) {
-            if (!is_numeric($age) || $age == "" || (int)($age) <= 0 || (int)($age) >= 100) {
-                return True;
-            }
-            return False;
-        }
+        $this->idUpdate=$idUpdate;
     }
 
+    // Erros Manager
+    public function getError()
+    {
+        return $this->error;
+    }
+
+    public function setError($error)
+    {
+        $this->error = $error;
+    }
+
+    public function getDestinationError($destination)
+    {
+        if (!is_numeric($destination) && $destination != '')
+            return False;
+        return True;
+    }
+
+    public function getPlaceError($places)
+    {
+        if ((int)$places <= 10 && is_numeric($places) && (int)$places > 0 && $places != '')
+            return False;
+        return True;
+    }
+
+    public function getNameError($names)
+    {
+        if(empty($names))
+            return True;
+
+        for($i=0; $i<count($names); $i++)
+        {
+            if(is_numeric($names[$i]) || $names[$i]=="")
+            {
+                return True;
+            }
+        }
+        return False;
+    }
+
+    public function getAgeError($ages)
+    {
+        if(empty($ages))
+            return True;
+
+        for($i=0; $i<count($ages); $i++)
+        {
+            if((int)($ages[$i])<=0 || (int)($ages[$i])>100)
+            {
+                return True;
+            }
+        }
+        return False;
+    }
+
+    public function getAge18Error($ages)
+    {
+        if(!empty($ages)){
+            $pass = 0;
+            for($i=0; $i<count($ages); $i++)
+            {
+                if ((int)($ages[$i]) >= 18)
+                {
+                    $pass += 1 ;
+                }
+            }
+            return $pass;
+        }
+    }
 }
 ?>

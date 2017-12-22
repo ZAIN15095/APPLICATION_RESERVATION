@@ -51,10 +51,10 @@ if(!empty($_POST)){
             $a2=$reservation->setAge($age);
 
             if($donnees["Assurance"]==1){
-                $reservation->setBox(True);
+                $reservation->setCheckBox(True);
             }
             else{
-                $reservation->setBox(False);
+                $reservation->setCheckBox(False);
             }
             include 'view/firstpage.php';
         }

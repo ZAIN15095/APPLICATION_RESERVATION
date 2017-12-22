@@ -1,25 +1,19 @@
 div {
     margin-bottom: 10px;
     position: relative;
+
+    background-color: white;
+
 }
 
-p {
-    font-size: 80%;
-    color: #999;
+body {
+    background-image: url("background-photo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 input + span {
     padding-right: 30px;
 }
 
-input:invalid+span:after {
-    position: absolute;
-    content: '✖';
-    padding-left: 5px;
-}
-
-input:valid+span:after {
-    position: absolute;
-    content: '✓';
-    padding-left: 5px;
-}
