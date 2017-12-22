@@ -24,7 +24,6 @@
                     <table class="table table-condensed">
                         <table class="w3-table-all">
 
-<<<<<<< HEAD
                             <thead>
                             <tr class="w3-blue">
                                 <th>Destination</th>
@@ -81,103 +80,6 @@
                                     ?>
                                 </td>
                             </tr>
-=======
-
-        <table class="table table-bordered">
-
-        <table class="table table-condensed">
-
-            <thead>
-            <tr>
-                <th>Destination</th>
-                <th>Nombre des palces </th>
-                <th>Assuration annulation </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td> <?php echo $reservation->getDestination(); ?></td>
-                <td> <?php echo $reservation->getPlace(); ?></td>
-                <td> <?php
-                    if($reservation->getBox())
-                        echo "OUI";
-                    else
-                        echo 'NON';
-                    ?>
-                </td>
-
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="container">
-    <h1>Validation des passagers</h1>
-    <table class="table table-condensed">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Age </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <?php
-                for ($i = 0; $i < $reservation->getPlace(); $i++)
-                {
-
-                    echo $reservation->getName()[$i].'<br /><br/>';
-
-                }
-                ?>
-
-
-                   echo $reservation->getName()[$i].'<br />';
-
-                }
-                ?>
-
-            </td>
-            <td>
-                <?php
-                for ($i = 0; $i < $reservation->getPlace(); $i++)
-                {
-
-                    echo $reservation->getAge()[$i].'<br /><br/>';
-
-                    echo $reservation->getAge()[$i].'<br />';
-
-
-                }
-                ?>
-            </td>
-
-
-        </tr>
-
-        </tbody>
-    </table>
-        <br />
-
-        <div class="btn-group">
-            <input type='submit' class="btn btn-primary" name='previous_page2' value='page précedente'/>
-            <input type='submit' class="btn btn-primary" name='confirm' value='confirmer'/>
-            <input type='submit' class="btn btn-primary" name='cancel' value='annuler'/>
-
-        </div>
-
-
-        </tr>
-
-        </tbody>
-    </table>
-        <br />
-
-        <input type='submit' class="button" name='previous_page2' value='page précedente'/>
-        <input type='submit' class="button" name='confirm' value='confirmer'/>
-        <input type='submit' class="button" name='cancel' value='annuler'/>
->>>>>>> 8f5e7547b7c8489d1c92b82154966d4f948ba6ed
 
                             </tbody>
                         </table>
