@@ -16,4 +16,31 @@ body {
 input + span {
     padding-right: 30px;
 }
+<<<<<<< HEAD
 
+<<<<<<< HEAD
+=======
+input:invalid+span:after {
+    position: absolute;
+    content: '✖';
+    padding-left: 5px;
+}
+
+input:valid+span:after {
+    position: absolute;
+    content: '✓';
+=======
+
+input:invalid+span:after {
+    position: absolute;
+    content: '✖';
+>>>>>>> 26d8b5f468fd98f386b686e9ab8dc2afd5b71f84
+    padding-left: 5px;
+}
+
+input:valid+span:after {
+    position: absolute;
+    content: '✓';
+    padding-left: 5px;
+}
+>>>>>>> 8f5e7547b7c8489d1c92b82154966d4f948ba6ed

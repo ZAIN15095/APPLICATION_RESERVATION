@@ -13,6 +13,7 @@
 </head>
 <body>
 <form method='POST' action="index.php">
+<<<<<<< HEAD
     <div class="w3-padding w3-display-middle">
         <div class="container">
             <div class="w3-container">
@@ -24,6 +25,19 @@
                 <input type='submit' value="Retour à la page d'accueil" class="btn btn-primary" name='cancel'>
             </div>
         </div>
+=======
+    <div class="container">
+    <h1>Confirmation des réservations</h1>
+    Votre demande a bien été enregistrée.
+    Merci de bien vouloir verser <?php echo $reservation->getPrice() ?> euros sur le compte 000-000000-00.<br />
+
+        <div class="btn-group">
+            <input type='submit' value="Retour à la page d'accueil" class="btn btn-primary" name='cancel'>
+        </div>
+
+    <input type='submit' value="Retour à la page d'accueil" class="button" name='cancel'>
+
+>>>>>>> 8f5e7547b7c8489d1c92b82154966d4f948ba6ed
     </div>
 </form>
 </body>
