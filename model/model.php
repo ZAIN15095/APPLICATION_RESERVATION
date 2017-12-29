@@ -3,7 +3,8 @@ class Reservation
 {
     private $destination;
     private $number_places;
-    private $name;
+    private $firstname;
+    private $lastname;
     private $age;
     private $page;
     private $error;
@@ -15,7 +16,8 @@ class Reservation
     {
         $this->destination = $destination;
         $this->number_places = $number_places;
-        $this->name = [];
+        $this->firstname = [];
+        $this->lastname = [];
         $this->age = [];
         $this->page = True;
         $this->error = False;
@@ -45,18 +47,32 @@ class Reservation
         $this->number_places = $places;
     }
 
-    public function getName()
+    public function getFirstName()
     {
-        while (count($this->name) < $this->number_places)
+        while (count($this->firstname) < $this->number_places)
         {
-            array_push($this->name, '');
+            array_push($this->firstname, '');
         }
-        return $this->name;
+        return $this->firstname;
     }
 
-    public function setName($names)
+    public function setFirstName($firstnames)
     {
-        $this->name = $names;
+        $this->firstname = $firstnames;
+    }
+
+    public function getLastName()
+    {
+        while (count($this->lastname) < $this->number_places)
+        {
+            array_push($this->lastname, '');
+        }
+        return $this->lastname;
+    }
+
+    public function setLastName($lastnames)
+    {
+        $this->lastname = $lastnames;
     }
 
     public function getAge()

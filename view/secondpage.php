@@ -23,12 +23,21 @@
                 for($i=0; $i < $reservation->getPlace(); $i++) {
 
                     echo "<br /><br /><div><label class='w3-text-blue' for='uname'>Nom</label>"."<input  class='w3-input w3-border' type='text' id='uname' 
-                    onkeydown=\"if(event.keyCode==32) return false;\" value='".$reservation->getName()[$i]."' name='names[]'
+                    onkeydown=\"if(event.keyCode==32) return false;\" value='".$reservation->getLastName()[$i]."' name='lastnames[]'
          placeholder = 'Entrer le nom' /> </div>";
 
                     if (isset($reservation)) {
-                        if ($reservation->getError() && $reservation->getNameError($reservation->getName()[$i]))
+                        if ($reservation->getError() && $reservation->getNameError($reservation->getLastName()[$i]))
                             echo "<p><code>Veuillez entrer un nom valide</code></p>";
+                    }
+
+                    echo "<br /><br /><div><label class='w3-text-blue' for='uname'>Prénom</label>"."<input  class='w3-input w3-border' type='text' id='uname' 
+                    onkeydown=\"if(event.keyCode==32) return false;\" value='".$reservation->getFirstName()[$i]."' name='firstnames[]'
+         placeholder = 'Entrer le prénom' /> </div>";
+
+                    if (isset($reservation)) {
+                        if ($reservation->getError() && $reservation->getNameError($reservation->getFirstName()[$i]))
+                            echo "<p><code>Veuillez entrer un prénom valide</code></p>";
                     }
 
                     echo "<br /><div><label class='w3-text-blue' for='uage'>Age</label>"."<input class='w3-input w3-border' type='text' id='uage'

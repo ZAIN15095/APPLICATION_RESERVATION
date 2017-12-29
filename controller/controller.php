@@ -37,7 +37,8 @@ elseif(isset($_POST["next"]) && !$reservation->getPlaceError($_POST['number_plac
 // If user click on previous when he's on Second Page
 elseif(isset($_POST['previous_page'])) {
     $reservation->setError(False);
-    $reservation->setName($_POST['names']);
+    $reservation->setFirstName($_POST['firstnames']);
+    $reservation->setLastName($_POST['lastnames']);
     $reservation->setAge($_POST['ages']);
     $reservation->setPage(True);
     include 'view/firstpage.php';
@@ -52,10 +53,11 @@ elseif(isset($_POST['previous_page2'])){
   }
 
 // Show Third Page
-elseif(isset($_POST['continue']) && !$reservation->getNameError($_POST['names']) && !$reservation->getAgeError($_POST['ages']) && $reservation->getAge18Error($_POST['ages']) != 0)
+elseif(isset($_POST['continue']) && !$reservation->getNameError($_POST['firstnames']) && !$reservation->getNameError($_POST['lastnames']) && !$reservation->getAgeError($_POST['ages']) && $reservation->getAge18Error($_POST['ages']) != 0)
 {
     $reservation->setAge($_POST['ages']);
-    $reservation->setName($_POST['names']);
+    $reservation->setFirstName($_POST['firstnames']);
+    $reservation->setLastName($_POST['lastnames']);
     include 'view/thirdpage.php';
 }
 
@@ -63,8 +65,9 @@ elseif(isset($_POST['confirm'])){
     $dest = $reservation->getDestination();
     $assurance = $reservation->getCheckBox();
     $total = $reservation->getPrice();
-    $names = implode(',', $reservation->getName());
-    $ages = implode(',', $reservation->getAge());
+    $firstnames = implode('\n', $reservation->getFirstName());
+    $lastnames = implode('\n', $reservation->getLastName());
+    $ages = implode('\n', $reservation->getAge());
 
     if($assurance==True)
         $assurance=1;
@@ -72,11 +75,11 @@ elseif(isset($_POST['confirm'])){
         $assurance=0;
 
     if($reservation->getStateUpdate() == False)
-        $sql="INSERT INTO Reservation (Destination, Assurance, Total, Nom, Age) VALUES ('$dest', '$assurance', '$total', '$names', '$ages')";
+        $sql="INSERT INTO Reservation (Destination, Assurance, Total, Prenom, Nom, Age) VALUES ('$dest', '$assurance', '$total', '$firstnames', '$lastnames', '$ages')";
 
     else{
         $id=$reservation->getIdUpdate();
-        $sql="UPDATE Reservation SET Destination='$dest', Assurance='$assurance', Total='$total', Nom='$names', Age='$ages' WHERE id='$id'";
+        $sql="UPDATE Reservation SET Destination='$dest', Assurance='$assurance', Total='$total', Prenom= '$firstnames', Nom='$lastnames', Age='$ages' WHERE id='$id'";
     }
 
     $stmt = $bdd->prepare($sql);
@@ -109,8 +112,9 @@ else
     }
 
     elseif($reservation->getPage()==False){
-        if (isset($_POST['names']) && isset ($_POST['ages'])) {
-            $reservation->setName($_POST['names']);
+        if (isset($_POST['firstnames']) && isset($_POST['lastnames']) && isset ($_POST['ages'])) {
+            $reservation->setFirstName($_POST['firstnames']);
+            $reservation->setLastName($_POST['lastnames']);
             $reservation->setAge($_POST['ages']);;
         }
 

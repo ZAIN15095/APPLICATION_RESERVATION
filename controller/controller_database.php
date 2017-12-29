@@ -21,6 +21,7 @@ try
     Destination TEXT(30) NOT NULL,
     Assurance BOOLEAN NOT NULL,
     Total TEXT(50),
+    Prenom TEXT(50),
     Nom TEXT(50),
     Age TEXT(50)
   )");

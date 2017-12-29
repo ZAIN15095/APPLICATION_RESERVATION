@@ -36,6 +36,7 @@
                             <th>Assurance</th>
                             <th> Total</th>
                             <th>Nom</th>
+                            <th>Prénom</th>
                             <th>Age</th>
                             <th>Editer</th>
                             <th>Supprimer</th>
@@ -92,6 +93,21 @@
                                 while($donnees = $reponse->fetch())
                                 {
                                     $list = explode(":", $donnees['Nom']);
+                                    for ($i = 0; $i < count($list); $i++)
+                                    {
+                                        echo  $list[$i]. '<br /><br />' ;
+
+                                        $i = $i + 1;
+                                    }
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                $reponse=$bdd->query('SELECT * FROM Reservation');
+                                while($donnees = $reponse->fetch())
+                                {
+                                    $list = explode(":", $donnees['Prenom']);
                                     for ($i = 0; $i < count($list); $i++)
                                     {
                                         echo  $list[$i]. '<br /><br />' ;

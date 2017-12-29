@@ -57,6 +57,7 @@
                             <thead>
                             <tr class="w3-blue">
                                 <th>Nom</th>
+                                <th>Prénom</th>
                                 <th>Age </th>
                             </tr>
                             </thead>
@@ -66,7 +67,7 @@
                                     <?php
                                     for ($i = 0; $i < $reservation->getPlace(); $i++)
                                     {
-                                        echo $reservation->getName()[$i].'<br /><br/>';
+                                        echo $reservation->getLastName()[$i].'<br /><br/>';
                                     }
                                     ?>
 
@@ -75,9 +76,20 @@
                                     <?php
                                     for ($i = 0; $i < $reservation->getPlace(); $i++)
                                     {
+                                        echo $reservation->getFirstName()[$i].'<br /><br/>';
+                                    }
+                                    ?>
+
+                                </td>
+                                <td>
+
+                                    <?php
+                                    for ($i = 0; $i < $reservation->getPlace(); $i++)
+                                    {
                                         echo $reservation->getAge()[$i].'<br /><br/>';
                                     }
                                     ?>
+
                                 </td>
                             </tr>
 
